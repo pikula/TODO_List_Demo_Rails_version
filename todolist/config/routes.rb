@@ -1,4 +1,8 @@
 Todolist::Application.routes.draw do
+  get "welcome/index"
+
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
   get "todoitem/index"
   get "todoitem/getcalendarevents"
   post "todoitem/create"
@@ -11,6 +15,9 @@ Todolist::Application.routes.draw do
   match "todoitem/delete/:id" => "todoitem#delete"
   match "todoitem/delete/:id" => "todoitem#delete"
   match "todoitem/finish/:id" => "todoitem#finish"
+  match "todoitem/" => "todoitem#index"
+  match "/" => "todoitem#index"
+  match "/welcome/index" => "welcome#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

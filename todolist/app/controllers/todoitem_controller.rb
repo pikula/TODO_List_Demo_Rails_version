@@ -1,6 +1,7 @@
 class TodoitemController < ApplicationController
 
   TODOS_PER_SECTION = 20
+  before_filter :authenticate_user!
  
   def index
   end
@@ -52,7 +53,7 @@ class TodoitemController < ApplicationController
 	end
 	if params[:id]==""
 		message="Task was successfully created!"
-		Todoitem.create!(:title=>params[:title], :start_time=>params[:start_time].to_time, :time_finished=>nil, :description=>params[:description], :done=>false, :priority=>params[:priority].to_i, :sort_num=>0)
+		Todoitem.create!(:title=>params[:title], :start_time=>params[:start_time].to_time, :time_finished=>nil, :description=>params[:description], :done=>false, :priority=>params[:priority].to_i, :sort_num=>0, :user_id=>current_user.id)
 	else
 		message="Task was successfully updated."
 		@todo = Todoitem.find params[:id].to_i
@@ -74,7 +75,7 @@ class TodoitemController < ApplicationController
   end
   
   def getcalendarevents
-	@events=Todoitem.all
+	@events=Todoitem.all(:conditions => {:user_id=>current_user.id})
 	events = [] 
 	@events.each do |event|
       events << {:id => event.id, :title => event.title, :description => event.description || "Some cool description here...", :start => "#{event.start_time.iso8601}", :end => "#{event.start_time.iso8601}", :className=>event.priority_string}
@@ -98,7 +99,7 @@ class TodoitemController < ApplicationController
   def gettodos
 	section=params[:current].to_i
 	loaded_todos=TODOS_PER_SECTION*section
-	@events=Todoitem.all(:conditions => {:done => false}, :order => "sort_num ASC, priority ASC, start_time ASC", :limit=>loaded_todos)
+	@events=Todoitem.where(:done => false, :user_id=>current_user.id).order("sort_num ASC, priority ASC, start_time ASC").limit(loaded_todos)
 	@loaded = @events.count<loaded_todos
 	render :partial => "/todoitem/todolist"
   end
@@ -106,7 +107,7 @@ class TodoitemController < ApplicationController
   def getarchive
 	section=params[:current].to_i
 	loaded_todos=TODOS_PER_SECTION*section
-	@events=Todoitem.all(:conditions => {:done => true}, :order => "time_finished DESC", :limit=>loaded_todos)
+	@events=Todoitem.where(:done => true, :user_id=>current_user.id).order("time_finished DESC").limit(loaded_todos)
 	@loaded = @events.count<loaded_todos	
 	@archive=true
 	render :partial => "/todoitem/todolist"
