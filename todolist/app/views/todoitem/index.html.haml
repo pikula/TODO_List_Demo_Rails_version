@@ -1,0 +1,23 @@
+= stylesheet_link_tag 'fullcalendar/fullcalendar'
+
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+.row-fluid
+	.span12
+		.alert.alert-error#msgError
+			%p
+		.alert.alert-success#msgSuccess
+			%p
+.row-fluid
+	.span12
+		%button{:class=>"btn btn-inverse pull-right", :id=>"new_todo", "data-toggle"=>"modal"} New task
+.row-fluid
+	.span6
+		#calendar
+	.span6
+		%fieldset
+			%legend
+				TODO List
+				%a{:class=>"btn btn-link", :id=>"view_archive"} (View archived list)				
+			#todo_list
+.modal.hide.fade#modalTodo
