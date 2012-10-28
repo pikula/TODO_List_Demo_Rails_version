@@ -1,8 +1,6 @@
 class CreateTodoitems < ActiveRecord::Migration
   def up
-	drop_table 'todoitems'
-	create_table 'todoitems' do |t|
-		
+	create_table 'todoitems' do |t|		
 		t.string 'title'
 		t.datetime 'start_time'
 		t.datetime 'time_finished', :null => true
@@ -10,7 +8,6 @@ class CreateTodoitems < ActiveRecord::Migration
 		t.boolean 'done'
 		t.integer 'sort_num'
 		t.integer 'priority'
-		t.integer 'user'
 		t.timestamps
 	end	
   end
