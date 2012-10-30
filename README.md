@@ -1,13 +1,15 @@
 TODO_List_Demo_Rails_version
 ============================
 Basic TODO List Demonstration application.
+
 Functionalities:
-- multiuser system with registration enabled with a correct email address
-- adding, editing, viewing and deleting tasks
+- multi-user system with registration and email confirmation
+- adding, editing, viewing, archiving and deleting tasks
 - tasks prioritised in 3 levels: high, medium, low
-- user enabled sorting of tasks with drag and drop funcionalities
-- view of archived(done) and active tasks
+- user enabled sorting of tasks with drag and drop functionalities (exception: newly added tasks always show on top of preferred user order or default order, default ordering: highest priority first then start time)
+- view of archived (done) and active tasks
 - show more button on TODO List (default view shows 20 tasks)
+- Ajax loading of changes on page
 
 Technologies used: 
 - Twitter Bootstrap (http://twitter.github.com/bootstrap/)
@@ -34,7 +36,11 @@ Tested with:
 - Internet Explorer version 9.0.8112.16421
 - Safari version 5.1.7
 
+Fixed bugs:
+- In Internet Explorer popup dialogs do not work correctly. They show up, but they disappear with click within a browser so forms cannot be filled. (fix date: 30/10/2012)
+
 Currently known bugs:
-- In Internet Explorer popup dialogs do not work correctly. They show up but they dissappear with click within a browser so forms cannot be filled. 
-- Time shows up in UTC format
-This issues will be addressed in future versions.
+- Time shows up in UTC format. This issues will be addressed in future versions.
+
+Preview of app:
+ - default view: http://oi45.tinypic.com/6690k2.jpg

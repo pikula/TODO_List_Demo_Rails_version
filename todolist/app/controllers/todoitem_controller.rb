@@ -18,7 +18,11 @@ class TodoitemController < ApplicationController
 		@todo=Todoitem. new
 		@todo.start_time=DateTime.now
 	end
-	render :partial => "/todoitem/todoform"
+	if(@todo.done)
+		render :partial => "/todoitem/tododetails"
+	else
+		render :partial => "/todoitem/todoform"
+	end
   end
   
   def finish
@@ -48,7 +52,7 @@ class TodoitemController < ApplicationController
 	title=params[:title]
 	start_time=params[:start_time].to_time
 	if(title.empty? || start_time.nil?)
-		result={:Success=>false, :Msg=>"You have entered invalid data in the form! Title and date must not be empty! Date must be in datetiem format example dd/mm/yyyy hh:mm"}
+		result={:Success=>false, :Msg=>"You have entered invalid data in the form! Title and date must not be empty! Date must be in datetime format example dd/mm/yyyy hh:mm"}
 		return render :json => result.to_json	
 	end
 	if params[:id]==""
@@ -92,7 +96,7 @@ class TodoitemController < ApplicationController
 		@todo.update_attributes!(:sort_num=>order)
 		order=order+1
 	end
-	message={:Success=>true, :Msg=>"List was successfully sorted!"}
+	message={:Success=>true, :Msg=>"List was successfully sorted but newly created tasks are always showed on top regardless of your preffered order!"}
 	render :json => message.to_json
   end
   
