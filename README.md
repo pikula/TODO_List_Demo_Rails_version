@@ -10,6 +10,7 @@ Functionalities:
 - view of archived (done) and active tasks
 - show more button on TODO List (default view shows 20 tasks)
 - Ajax loading of changes on page
+- user enabled time zone change (default time zone: "Zagreb", added: 2/11/2012)
 
 Technologies used: 
 - Twitter Bootstrap (http://twitter.github.com/bootstrap/)
@@ -24,7 +25,7 @@ Technologies used:
 	* TinyTDS 0.4.5
 	* SQL Server support 3.3.3
 	* DevKit
--added gems:
+- added gems:
 	* Haml
 	* Devise (https://github.com/plataformatec/devise)
 	
@@ -38,9 +39,10 @@ Tested with:
 
 Fixed bugs:
 - In Internet Explorer popup dialogs do not work correctly. They show up, but they disappear with click within a browser so forms cannot be filled. (fix date: 30/10/2012)
-
-Currently known bugs:
-- Time shows up in UTC format. This issues will be addressed in future versions.
+- Time shows up in UTC format. (fix date: 2/11/2012)
 
 Preview of app:
- - default view: http://oi45.tinypic.com/6690k2.jpg
+ - default view: http://oi50.tinypic.com/fegqk3.jpg
+ - edit task: http://oi45.tinypic.com/dlnfrn.jpg
+ - task details: http://oi48.tinypic.com/2n7nzn4.jpg
+ - archived tasks view: http://oi46.tinypic.com/x3y1e1.jpg

@@ -92,6 +92,20 @@ $(document).ready(function () {
         });
     });
 
+	//Save new time zone
+    $(document).on("click", '#change_time_zone', function () {
+        var zone;
+		zone = $("#user_time_zone").val();
+		$.ajax({
+            url: '/todoitem/changezone/',
+            data: { zone: zone },
+            type: 'post',
+            success: function (data) {
+				$('#calendar').fullCalendar('refetchEvents');
+                refreshList(data);
+            }
+        });
+    });
     //Save new order of task list
     $(document).on("click", '#submit-list', function () {
         var data, send;

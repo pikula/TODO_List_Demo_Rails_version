@@ -1,6 +1,8 @@
-= stylesheet_link_tag 'fullcalendar/fullcalendar'
-
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+.row-fluid
+	%form{:class=>"form-inline", :action=>"javascript:void(0)"}
+		=time_zone_select( "user", 'time_zone',  ActiveSupport::TimeZone.us_zones, :default => current_user.time_zone)
+		%button{:id=>"change_time_zone", :class=>"btn btn-inverse"} Change time zone
 .row-fluid
 	.span12
 		.alert.alert-error#msgError

@@ -19,9 +19,9 @@
 			%label{:class=>"control-label"} Priority
 			.controls
 				%select#priority{ :name => "priority"}
-					%option{:value=>"1"} High
-					%option{:value=>"2"} Medium
-					%option{:value=>"3"} Low
+					%option{:value=>"1", :selected=>(@todo.priority==1)} High
+					%option{:value=>"2", :selected=>(@todo.priority==2)} Medium
+					%option{:value=>"3", :selected=>(@todo.priority==3)} Low
 		.control-group
 			%label{:class=>"control-label"} Description
 			.controls

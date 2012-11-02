@@ -8,6 +8,7 @@ Todolist::Application.routes.draw do
   post "todoitem/create"
   post "todoitem/save"
   post "todoitem/sorttodos"
+  post "todoitem/changezone"
   match "todoitem/details/:id" => "todoitem#details"
   match "todoitem/gettodos/:current" => "todoitem#gettodos"
   match "todoitem/getarchive/:current" => "todoitem#getarchive"
@@ -18,7 +19,7 @@ Todolist::Application.routes.draw do
   match "todoitem/" => "todoitem#index"
   match "/" => "todoitem#index"
   match "/welcome/index" => "welcome#index"
-
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

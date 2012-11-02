@@ -91,7 +91,6 @@ class TodoitemController < ApplicationController
 	order=1
 	@items = params[:items].split(',')
 	@items.each do |item|
-		puts item
 		@todo = Todoitem.find item.to_i
 		@todo.update_attributes!(:sort_num=>order)
 		order=order+1
@@ -115,5 +114,13 @@ class TodoitemController < ApplicationController
 	@loaded = @events.count<loaded_todos	
 	@archive=true
 	render :partial => "/todoitem/todolist"
+  end
+  
+  def changezone
+	zone = params[:zone]
+	@user = User.find current_user.id
+	@user.update_attributes!(:time_zone=>zone)
+	result={:Success=>true, :Msg=>"Time zone was successfully changed." }
+	render :json => result.to_json
   end
 end
