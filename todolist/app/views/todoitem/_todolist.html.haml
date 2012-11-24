@@ -2,8 +2,9 @@
 	-@events.each do |item|
 		%li{:id=>"#{item.id}", :class=>"row-fluid"}
 			.span1
-				%a{:class=>"finish_todo", "data-toggle"=>"modal"}
-					%i{:class=>item.expired ? "icon-warning-sign" : "icon-ok"}
+				-if !item.done
+					%a{:class=>"finish_todo", "data-toggle"=>"modal"}
+						%i{:class=>item.expired ? "icon-warning-sign" : "icon-ok"}
 			.span2
 				-(1..(4-item.priority.to_i)).each do |i|
 					%i{:class=>"icon-star"}
