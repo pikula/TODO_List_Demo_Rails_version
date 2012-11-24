@@ -17,6 +17,7 @@ Technologies used:
 - FullCalendar jQuery plugin (http://arshaw.com/fullcalendar/)
 - jQuery (http://jquery.com/)
 - CSS
+- CofeeScript (http://coffeescript.org/)
 - Ruby on Rails (http://railsinstaller.org/ - Windows installer version 2.1.0):
 	* Ruby 1.9.3-p125
 	* Rails 3.2
@@ -26,7 +27,7 @@ Technologies used:
 	* SQL Server support 3.3.3
 	* DevKit
 - added gems:
-	* Haml
+	* Haml (http://haml.info/)
 	* Devise (https://github.com/plataformatec/devise)
 	
 
